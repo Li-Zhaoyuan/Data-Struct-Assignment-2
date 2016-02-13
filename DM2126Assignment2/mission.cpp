@@ -28,7 +28,7 @@ using std::queue;
  bool Brackets(const string& input)
 {
 	 stack<char> cstack;
-	 bool brackets = false;//()
+	 bool brackets = false;
 	 if (input.empty())
 	 {
 		 return false;
@@ -44,7 +44,7 @@ using std::queue;
 		{
 			return false;
 		}
-		else if (input[i] == ')' || input[i] == ']' || input[i] == '}' || input[i] == '>')
+		else if (input[i] == ')' || input[i] == ']' || input[i] == '}' || input[i] == '>')//closing of all the different brackets
 		{
 			if ((cstack.top() == '(' && input[i] == ')')
 				|| (cstack.top() == '[' && input[i] == ']')
@@ -79,4 +79,16 @@ using std::queue;
 void QueryMachine(vector<int>& data, vector<int>& queries, vector<unsigned int>& results)
 {
 
+	for (int qnum = 0; qnum < queries.size(); qnum++)
+	{
+		size_t amount = 0;
+		for (int dnum = 0; dnum < data.size(); dnum++)
+		{
+			if (queries[qnum] == data[dnum])
+			{
+				amount += 1;
+			}
+		}
+		results.push_back(amount);
+	}
 }
