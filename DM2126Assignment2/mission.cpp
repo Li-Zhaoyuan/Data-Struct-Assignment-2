@@ -18,15 +18,60 @@ using std::queue;
 /*! 
  *  \brief     DM2126 Assignment 2
  *  \details   Submit the whole solution, but only this file will be used to grade
- *  \author    <John Doe>
+ *  \author    <Li Zhaoyuan>
  *  \date      2015 
- *  \note      <Admin ID>
+ *  \note      <150592K>
  */
 
 
 // Balanced parenthesis
  bool Brackets(const string& input)
 {
+	 stack<char> cstack;
+	 bool brackets = false;//()
+	 if (input.empty())
+	 {
+		 return false;
+	 }
+	
+	for (size_t i = 0; i < input.length(); i++)
+	{
+		if (input[i] == '(' || input[i] == '[' || input[i] == '{' || input[i] == '<')//opening of all the different brackets
+		{
+			cstack.push(input[i]);
+		}
+		else if (cstack.empty() == true)
+		{
+			return false;
+		}
+		else if (input[i] == ')' || input[i] == ']' || input[i] == '}' || input[i] == '>')
+		{
+			if ((cstack.top() == '(' && input[i] == ')')
+				|| (cstack.top() == '[' && input[i] == ']')
+				|| (cstack.top() == '{' && input[i] == '}')
+				|| (cstack.top() == '<' && input[i] == '>'))
+			{
+				brackets = true;
+			}
+			else
+			{
+				brackets = false;
+			}
+			if (cstack.empty() == true || brackets == false)
+			{
+				return false;
+			}
+			else
+			{
+				cstack.pop();
+			}
+		}
+	}
+	if (cstack.empty() == true)
+	{
+		return true;
+	}
+	 
     return false;
 }
 
