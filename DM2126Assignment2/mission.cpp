@@ -79,10 +79,10 @@ using std::queue;
 void QueryMachine(vector<int>& data, vector<int>& queries, vector<unsigned int>& results)
 {
 
-	for (int qnum = 0; qnum < queries.size(); qnum++)
+	for (size_t qnum = 0; qnum < queries.size(); qnum++)
 	{
 		size_t amount = 0;
-		for (int dnum = 0; dnum < data.size(); dnum++)
+		for (size_t dnum = 0; dnum < data.size(); dnum++)
 		{
 			if (queries[qnum] == data[dnum])
 			{
